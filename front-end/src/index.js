@@ -1,17 +1,60 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './components/App/App'
+import './style.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import HorizontalNav from './components/HorizontalNav'
+import VerticalNav from './components/VerticalNav'
+import Header from './components/Header'
+import SimpleBarChart from './components/SimpleBarChart'
+import TinyLineChart from './components/TinyLineChart'
+import SimpleRadarChart from './components/SimpleRadarChart'
+import MacroInfos from './components/MacroInfos'
+import SimpleRadialBarChart from './components/SimpleRadialBarChart'
+
+import CaloriesIcon from './assets/iconcalories.svg'
+import ProteinIcon from './assets/protein-icon.svg'
+import CarbsIcon from './assets/carbs-icon.svg'
+import FatIcon from './assets/fat-icon.svg'
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+    <HorizontalNav />
+    <VerticalNav />
+    <main className='content'>
+      <div className='infos__chart'>
+        <Header />
+        <SimpleBarChart />
+        <TinyLineChart />
+        <SimpleRadarChart />
+        <SimpleRadialBarChart />
+      </div>
+      <div>
+        <MacroInfos
+        icon={[CaloriesIcon]}
+        macroName={['Calories']}
+        value={['1500kCal']}
+        />
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+        <MacroInfos
+        icon={[ProteinIcon]}
+        macroName={['Proteines']}
+        value={['150g']}
+        />
+
+        <MacroInfos
+        icon={[CarbsIcon]}
+        macroName={['Glucides']}
+        value={['150g']}
+        />
+
+        <MacroInfos
+        icon={[FatIcon]}
+        macroName={['Lipides']}
+        value={['150g']}
+        />
+      </div>
+    </main>
+  </React.StrictMode>
+)

@@ -1,0 +1,10 @@
+.tiny__line__chart{
+    height: 263px;
+    width: 258px;
+    border-radius: 5px;
+    background-color: #FF0000;
+}
+
+.tiny__line__chart p{
+    color: #fff;
+}

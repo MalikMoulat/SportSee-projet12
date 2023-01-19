@@ -1,0 +1,32 @@
+
+
+.horizontalnav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 91px;
+    align-items: center;
+    background-color: black;
+    position: absolute;
+    z-index: 100;
+}
+
+.horizontalnav img {
+    height: 60px;
+}
+
+.horizontalnav nav {
+    width: 100%;
+    align-self: center;
+}
+
+.horizontalnav nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+
+.horizontalnav a {
+    text-decoration: none;
+    color: #ffff;
+}

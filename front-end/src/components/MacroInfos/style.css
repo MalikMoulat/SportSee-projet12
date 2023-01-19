@@ -1,0 +1,20 @@
+.macro__infos{
+    display: flex;
+    background-color: #FBFBFB;
+    height: 124px;
+    width: 258px;
+    border-radius: 5px;
+    align-items: center;
+    margin-bottom: 39px;
+}
+
+.macro__infos img {
+    height: 60px;
+    width: 60px;
+    border-radius: 6px;
+    margin: 32px 24px 32px 32px;
+}
+
+.macro__infos h3, .macro__infos p {
+    margin: 1px;
+}

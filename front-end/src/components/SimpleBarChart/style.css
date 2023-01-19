@@ -1,0 +1,7 @@
+.simple__bar__content {
+    height: 320px;
+    width: 835px;
+    border-radius: 5px;
+    grid-column: 1 / 4;
+    background-color: #FBFBFB;
+}
