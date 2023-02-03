@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from '../../components/App/App'
 import {useParams, Navigate} from 'react-router-dom'
 import './style.css'
+
+import getAllData from '../../API/Api'
+
+import Home from '../Home'
 
 import Header from '../../components/Header'
 import SimpleBarChart from '../../components/SimpleBarChart'
@@ -16,16 +20,83 @@ import ProteinIcon from '../../assets/protein-icon.svg'
 import CarbsIcon from '../../assets/carbs-icon.svg'
 import FatIcon from '../../assets/fat-icon.svg'
 
+import User from '../../Modelization/User';
+import Activity from '../../Modelization/Activity'
+import Average from '../../Modelization/Average'
+import Performance from '../../Modelization/Performance'
+
+import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../API/MockData'
+
+// console.log(USER_MAIN_DATA)
+
 function Dashboard() {
+
+    const urlId = useParams()
+
+    const [isData, setIsData] = useState(false)
+    const [firstFetch, setFirstFetch] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const [scores, setScores] = useState()
+    const [getUserData, setGetUserData] = useState(null)
+    const [getActivityData, setGetActivityData] = useState(null)
+    const [getAverageData, setGetAverageData] = useState(null)
+    const [getPerfData, setGetPerfData] = useState(null)
+
+    const [getError, setGetError] = useState(false);
+
+    if(Object.keys(urlId) !== 0){
+        localStorage.setItem('id', urlId)
+        useEffect(() => {
+            async function getUserData() {
+                try {
+                    if (!firstFetch) {
+                        
+                        setFirstFetch(true)
+                    
+                        const userDatas = await getAllData(urlId.id)
+                        
+                        const user = new User(userDatas.user)
+                        const activity = new Activity(userDatas.activity)
+                        const average = new Average(userDatas.average)
+                        const performance = new Performance(userDatas.performance)
+
+
+                        
+                        console.log(user, activity, average, performance)
+                        
+                        //Placement de la data dans le useState
+                        setGetUserData(user.data)
+                        setGetActivityData(activity.data)
+                        setGetAverageData(average.data)
+                        setGetPerfData(performance.data)
+                        
+
+                        setGetError(false)
+                        setIsData(true)
+
+                    }
+                }
+                catch (error) {
+                    setGetError(true)
+                    setIsData(false)
+                }
+            }
+            getUserData()
+        }, [])
+    }
+
+
+
 
     return (
         <div className='content'>
         <div className='infos__chart'>
-            <Header />
-            <SimpleBarChart />
-            <TinyLineChart />
-            <SimpleRadarChart />
-            <SimpleRadialBarChart />
+            <Header data={getUserData} />
+            <SimpleBarChart data={getActivityData} />
+            <TinyLineChart data={getAverageData} />
+            <SimpleRadarChart data={getPerfData} />
+            <SimpleRadialBarChart data={getUserData} />
         </div>
         <div>
             <MacroInfos

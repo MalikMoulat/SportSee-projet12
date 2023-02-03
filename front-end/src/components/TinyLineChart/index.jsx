@@ -48,7 +48,11 @@ const data = [
 
 
 
-function TinyLineChart() {
+function TinyLineChart({data}) {
+
+
+  const datas = data?.sessions
+
     return(
         <div className='tiny__line__chart'>
           <p>Durée moyenne des sessions</p>
@@ -56,10 +60,10 @@ function TinyLineChart() {
               <LineChart
                 width={300}
                 height={100}
-                data={data}>
+                data={datas}>
                   <Line
                     type="monotone"
-                    dataKey="pv"
+                    dataKey="sessionLength"
                     stroke="#ffff"
                     strokeWidth={2}
                     activeDot={{ stroke: "#000", strokeWidth: 2, r: 3 }}
@@ -74,7 +78,7 @@ function TinyLineChart() {
                     }}
                     />
                     <XAxis
-                      dataKey={"pv"}
+                      dataKey="day"
                     />
               </LineChart>
           </ResponsiveContainer>

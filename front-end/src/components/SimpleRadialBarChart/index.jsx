@@ -2,25 +2,51 @@ import React from 'react';
 import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
 import './style.css'
 
-const data = [
-  {
-    name: '18-24',
-    uv: 31.47,
-    pv: 2400,
-    fill: '#8884d8',
+// const data = [
+//   {
+//     name: '18-24',
+//     uv: 31.47,
+//     pv: 2400,
+//     fill: '#8884d8',
+//   }
+// ];
+
+// const style = {
+//   top: '50%',
+//   right: 0,
+//   transform: 'translate(0, -50%)',
+//   lineHeight: '24px',
+// };
+
+
+
+function SimpleRadialBarChart({data}) {
+
+  
+
+  const datas = []
+  const todayScore = data?.todayScore
+  const score = data?.score
+
+  
+
+  // console.log(todayScore, score)
+
+  if(typeof todayScore !== 'undefined'){
+    // console.log('todayScore')
+    datas.push(data.todayScore)
+  }else if(typeof score !== 'undefined'){
+    // console.log('Score')
+    datas.push(data.score)
   }
-];
 
-const style = {
-  top: '50%',
-  right: 0,
-  transform: 'translate(0, -50%)',
-  lineHeight: '24px',
-};
+  console.log(datas)
+
+  const dataValue = 360 * datas[0]
+
+  
 
 
-
-function SimpleRadialBarChart() {
     return (
     <div className='simple__radial__bar__chart'>
       <ResponsiveContainer width="100%" height="100%">
@@ -31,13 +57,14 @@ function SimpleRadialBarChart() {
           outerRadius="80%"
           barSize={10}
           startAngle={-180}
-          data={data}>
+          endAngle={-180 + -dataValue}
+          data={datas}>
           <RadialBar
             minAngle={15}
             label={{ position: 'insideStart', fill: '#fff' }}
-            background
+            background={{ fill: "#2C3FF7" }}
             clockWise
-            dataKey="uv"
+            dataKey="0"
             cornerRadius={5}
           />
         </RadialBarChart>

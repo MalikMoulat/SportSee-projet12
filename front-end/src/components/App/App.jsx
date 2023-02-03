@@ -1,6 +1,14 @@
-//import Api from '../API/Api';
+import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './style.css'
+
+import HorizontalNav from '../HorizontalNav';
+import VerticalNav from '../VerticalNav';
+
+import Dashboard from '../../pages/Dashboard';
+import Home from '../../pages/Home';
 import getAllData from '../../API/Api';
-import User from '../../Models/User';
+import User from '../../Modelization/User';
 
 const userArr = []
 const activityArr = []
@@ -29,7 +37,7 @@ function App() {
             // console.log('Array Value : ', Object.values(userData.data))
 
             for(const [key, valuee] of Object.entries(userData)){
-                console.log('TEST DATA', key, valuee)
+                //console.log('TEST DATA', key, valuee)
             }
             
 
@@ -38,7 +46,7 @@ function App() {
             averageArr.push(value.average.data.data)
             performanceArr.push(value.performance.data.data)
 
-            console.log('ARR',userData)
+            //console.log('ARR',userData)
 
             return userData            
         })
@@ -85,8 +93,16 @@ async function getUserData() {
     console.log('performanceArr : ', performanceArr)
     */
     return(
-       // eslint-disable-next-line react/react-in-jsx-scope
-       <h1>HELLO</h1>
+       <Router>
+       <HorizontalNav />
+       <VerticalNav />
+       <main>
+         <Routes>
+           <Route path='/' element={<Home />} />
+           <Route path='dashboard/:id' element={<Dashboard />} />
+         </Routes>
+       </main>
+       </Router>
     )
 }
 

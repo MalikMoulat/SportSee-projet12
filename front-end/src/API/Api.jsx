@@ -1,4 +1,3 @@
-//import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
@@ -28,25 +27,6 @@ const getAllData = async (id) => {
       throw new Error(error);
     });
 };
-
-
-/*
-getAllData(12).then((value) => {
-    //console.log('VALUE : ', value.activity.data.data.sessions);
-    //console.log('VALUE : ', value.user.data.data.userInfos);
-    //console.log(value.average.data.data)
-
-    const uuser = new User(value);
-
-    console.log(uuser)
-
-    return uuser
-    // expected output: "Success!"
-});
-*/
-
-
-//console.log('test : ', data12.activity)
 
 
 export default getAllData
