@@ -4,30 +4,30 @@ import calorieIcon from '../../assets/iconcalories.svg'
 
 
 import './style.css'
-function MacroInfos(icon, macroName) {
+function MacroInfos({icon, value, macroName, data}) {
 
-    /*
-    let displayedMacroName
-    // Si le type de macroName est un string retoune macroName dans un array sinon retourne macroName (qui est un array)
-    (typeof macroName === 'string') ? displayedMacroName = [macroName] : displayedMacroName = macroName
-    {   displayedMacroName.map((e, index) => {
-                        return <h3 key={e + index}>{e}</h3>
-                        })}
+    
+    // let displayedMacroName
+    // // Si le type de macroName est un string retoune macroName dans un array sinon retourne macroName (qui est un array)
+    // (typeof macroName === 'string') ? displayedMacroName = [macroName] : displayedMacroName = macroName
+    // {   displayedMacroName.map((e, index) => {
+    //                     return <h3 key={e + index}>{e}</h3>
+    //                     })}
     
     
-    console.log('ICON :',icon.icon[0])
-    console.log('ICON :',icon.macroName[0])
-    console.log('ICON :',icon.value[0])
-    console.log(icon)
-*/
+    // console.log('ICON :',icon.icon[0])
+    // console.log('ICON :',icon.macroName[0])
+    // console.log('ICON :',icon.value[0])
+    
+
 
     return (
         
         <div className='macro__infos'>
-            <img src={icon.icon[0]} alt="Calorie icon"></img>
+            <img src={icon} alt="Calorie icon"></img>
             <div>
-                <h3>{icon.value[0]}</h3>
-                <p>{icon.macroName[0]}</p>
+                <h3>{data}</h3>
+                <p>{macroName}</p>
             </div>
         </div>
     )

@@ -25,6 +25,8 @@ import Activity from '../../Modelization/Activity'
 import Average from '../../Modelization/Average'
 import Performance from '../../Modelization/Performance'
 
+import { getCalorieCount, getCarbohydrateCount, getLipideCount, getProteinCount } from '../../Utils/FormatDatas'
+
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../API/MockData'
 
 // console.log(USER_MAIN_DATA)
@@ -86,6 +88,11 @@ function Dashboard() {
         }, [])
     }
 
+    getCalorieCount(getUserData)
+    getCarbohydrateCount(getUserData)
+    getLipideCount(getUserData)
+    getProteinCount(getUserData)
+
 
 
 
@@ -103,24 +110,28 @@ function Dashboard() {
             icon={[CaloriesIcon]}
             macroName={['Calories']}
             value={['1500kCal']}
+            data={getCalorieCount(getUserData)}
             />
 
             <MacroInfos
             icon={[ProteinIcon]}
             macroName={['Proteines']}
             value={['150g']}
+            data={getProteinCount(getUserData)}
             />
 
             <MacroInfos
             icon={[CarbsIcon]}
             macroName={['Glucides']}
             value={['150g']}
+            data={getCarbohydrateCount(getUserData)}
             />
 
             <MacroInfos
             icon={[FatIcon]}
             macroName={['Lipides']}
             value={['150g']}
+            data={getLipideCount(getUserData)}
             />
         </div>
         </div>

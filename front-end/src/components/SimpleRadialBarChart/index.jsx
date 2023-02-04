@@ -40,7 +40,7 @@ function SimpleRadialBarChart({data}) {
     datas.push(data.score)
   }
 
-  console.log(datas)
+  // console.log(datas)
 
   const dataValue = 360 * datas[0]
 
