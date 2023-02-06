@@ -65,7 +65,7 @@ function Dashboard() {
 
 
                         
-                        console.log(user, activity, average, performance)
+                        // console.log(user, activity, average, performance)
                         
                         //Placement de la data dans le useState
                         setGetUserData(user.data)
@@ -104,36 +104,37 @@ function Dashboard() {
             <TinyLineChart data={getAverageData} />
             <SimpleRadarChart data={getPerfData} />
             <SimpleRadialBarChart data={getUserData} />
+            <div className='content__macro__infos'>
+                <MacroInfos
+                icon={[CaloriesIcon]}
+                macroName={['Calories']}
+                value={['1500kCal']}
+                data={getCalorieCount(getUserData)}
+                />
+
+                <MacroInfos
+                icon={[ProteinIcon]}
+                macroName={['Proteines']}
+                value={['150g']}
+                data={getProteinCount(getUserData)}
+                />
+
+                <MacroInfos
+                icon={[CarbsIcon]}
+                macroName={['Glucides']}
+                value={['150g']}
+                data={getCarbohydrateCount(getUserData)}
+                />
+
+                <MacroInfos
+                icon={[FatIcon]}
+                macroName={['Lipides']}
+                value={['150g']}
+                data={getLipideCount(getUserData)}
+                />
+            </div>
         </div>
-        <div>
-            <MacroInfos
-            icon={[CaloriesIcon]}
-            macroName={['Calories']}
-            value={['1500kCal']}
-            data={getCalorieCount(getUserData)}
-            />
 
-            <MacroInfos
-            icon={[ProteinIcon]}
-            macroName={['Proteines']}
-            value={['150g']}
-            data={getProteinCount(getUserData)}
-            />
-
-            <MacroInfos
-            icon={[CarbsIcon]}
-            macroName={['Glucides']}
-            value={['150g']}
-            data={getCarbohydrateCount(getUserData)}
-            />
-
-            <MacroInfos
-            icon={[FatIcon]}
-            macroName={['Lipides']}
-            value={['150g']}
-            data={getLipideCount(getUserData)}
-            />
-        </div>
         </div>
     )
 }

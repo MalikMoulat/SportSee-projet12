@@ -2,7 +2,7 @@
     background-color: black;
     color: #ffff;
     width: 117px;
-    height: 100vh;
+    height: 1050px;
     position: absolute;
 }
 
@@ -26,5 +26,7 @@
 
 .verticalnav p {
     writing-mode: vertical-rl;
-    
+    rotate: 180deg;
+    width: fit-content;
+    margin: 0 auto;
 }

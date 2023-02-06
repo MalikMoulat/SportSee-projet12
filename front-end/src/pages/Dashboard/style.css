@@ -4,10 +4,44 @@
     min-width: 1064px;
     height: 100%;
     justify-content: space-between;
-    border: solid 1px purple;
+    /* border: solid 1px purple; */
+    gap: 30px;
+    
 }
 
+
 .infos__chart{
+    width: 100%;
     display: grid;
-    grid: 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.header {
+    grid-column: 1/5;
+    height: 134px;
+}
+
+.tiny__line__chart{
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.simple__radar__chart{
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.simple__radial__bar__chart{
+    grid-column: 3;
+    grid-row: 3;
+}
+
+.content__macro__infos {
+    grid-column: 4;
+    grid-row: 2/4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

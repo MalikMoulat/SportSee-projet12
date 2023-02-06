@@ -10,8 +10,8 @@ function Header ({data}) {
 
     return (
         <section className='header'>
-            <h1>{data?.userInfos?.firstName}</h1>
-            <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+            <h1> Bonjour <span className='user__name'>{data?.userInfos?.firstName}</span></h1>
+            <h2>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
         </section>
     )
 }

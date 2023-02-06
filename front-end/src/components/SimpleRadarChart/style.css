@@ -4,3 +4,8 @@
     border-radius: 5px;
     background-color: #282D30;
 }
+
+.simple__radar__chart__content{
+    height: 85%;
+    margin-top: 25px;
+}

@@ -17,3 +17,23 @@ export function getLipideCount(data){
 
 
 
+export function handleFormatTick(numDay) {
+    const days = ["L", "M", "M", "J", "V", "S", "D"];
+  
+    switch (numDay) {
+      case 1:
+        return days[0];
+      case 2:
+        return days[1];
+      case 3:
+        return days[2];
+      case 4:
+        return days[3];
+      case 5:
+        return days[4];
+      case 6:
+        return days[5];
+      case 7:
+        return days[6];
+    }
+  }

@@ -5,6 +5,11 @@
     background-color: #FF0000;
 }
 
-.tiny__line__chart p{
+.tiny__line__chart h3{
     color: #fff;
+    position: absolute;
+    opacity: 0.5;
+    font-size: 15px;
+    width: 180px;
+    margin: 29px 0 0 34px;
 }

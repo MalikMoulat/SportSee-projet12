@@ -5,7 +5,18 @@
 }
 */
 
-.header {
-    grid-column: 1 / 4;
-    /*grid-row: 1;*/
+
+
+.user__name {
+    color: #FF0000;
+}
+
+.header h1{
+    font-size: 48px;
+    margin: 0;
+}
+
+.header h2 {
+    font-size: 18px;
+    font-weight: 400;
 }

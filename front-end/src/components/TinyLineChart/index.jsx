@@ -1,51 +1,8 @@
 import React, { Component } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './style.css'
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-]
 
+import { handleFormatTick } from '../../Utils/FormatDatas';
 
 
 function TinyLineChart({data}) {
@@ -53,9 +10,11 @@ function TinyLineChart({data}) {
 
   const datas = data?.sessions
 
+  
+
     return(
         <div className='tiny__line__chart'>
-          <p>Durée moyenne des sessions</p>
+          <h3>Durée moyenne des sessions</h3>
           <ResponsiveContainer width="100%" height="100%">
               <LineChart
                 width={300}
@@ -66,7 +25,8 @@ function TinyLineChart({data}) {
                     dataKey="sessionLength"
                     stroke="#ffff"
                     strokeWidth={2}
-                    activeDot={{ stroke: "#000", strokeWidth: 2, r: 3 }}
+                    dot={false}
+                    activeDot={{ stroke: "#ffffff", strokeWidth: 2, r: 3 }}
                   />
                   <Tooltip
                     wrapperStyle={{
@@ -79,7 +39,13 @@ function TinyLineChart({data}) {
                     />
                     <XAxis
                       dataKey="day"
+                      axisLine={false}
+                      tickLine={false}
+                      stroke={"#fff"}
+                      tickFormatter={handleFormatTick}
+                      
                     />
+                    <YAxis hide padding={{ top: 70, bottom: 20 }} />
               </LineChart>
           </ResponsiveContainer>
         </div>

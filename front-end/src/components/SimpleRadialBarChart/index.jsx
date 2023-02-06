@@ -44,12 +44,22 @@ function SimpleRadialBarChart({data}) {
 
   const dataValue = 360 * datas[0]
 
+  // console.log(100 * datas[0])
+  const pourcentScore = 100 * datas[0]
+
+  
+
   
 
 
     return (
     <div className='simple__radial__bar__chart'>
-      <ResponsiveContainer width="100%" height="100%">
+      <h3>Score</h3>
+      <div className='pourcent__score'>
+        <span>{pourcentScore + '%'}</span>
+        <p>de votre objectif</p>
+      </div>
+      <ResponsiveContainer className={'radialBarChart'} width="100%" height="100%">
         <RadialBarChart
           cx="50%"
           cy="50%"
@@ -62,7 +72,7 @@ function SimpleRadialBarChart({data}) {
           <RadialBar
             minAngle={15}
             label={{ position: 'insideStart', fill: '#fff' }}
-            background={{ fill: "#2C3FF7" }}
+            background={{ fill: "#FF0101" }}
             clockWise
             dataKey="0"
             cornerRadius={5}

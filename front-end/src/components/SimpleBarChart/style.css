@@ -5,3 +5,9 @@
     grid-column: 1 / 4;
     background-color: #FBFBFB;
 }
+
+.simple__bar__content h3 {
+    position: absolute;
+    margin: 24px 0 0 32px;
+    font-size: 15px;
+}

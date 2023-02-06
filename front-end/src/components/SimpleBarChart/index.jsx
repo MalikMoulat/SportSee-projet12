@@ -7,14 +7,32 @@ function SimpleBarChart({data}) {
 
   const datas = data?.sessions
 
+  // console.log(datas)
+
+  const datax = []
+  const payload = [[], []]
+
+  for (let day = 0; day < datas?.length; day++) {
+    const dayStr = (day + 1).toString()
+    datax.push({
+      day: dayStr,
+      kilogram: datas[day].kilogram,
+      calories: datas[day].calories
+    })
+    payload[0].push(datas[day].kilogram)
+    payload[1].push(datas[day].calories)
+  }
+
+  // console.log('datax', datax)
+
   
     return (
         <div className='simple__bar__content'>
-              <p>Activité quotidienne</p>      
+              <h3>Activité quotidienne</h3>      
               <BarChart
               width={830}
               height={320}
-              data={datas}
+              data={datax}
               margin={{
               top: 5,
               right: 30,
@@ -24,11 +42,19 @@ function SimpleBarChart({data}) {
               >
                 <XAxis
                   dataKey="day"
-                  tickLine={{ stroke: '#E60000' }}
+                  // tickLine={{ stroke: '#E60000' }}
+                  tickLine={false}
+                  domain={["dataMin + 1", "dataMax + 1"]}
+                  
                 />
                 <YAxis
+                
                   orientation="right"
                   axisLine={false}
+                  // dataKey="kilogram"
+                  // domain={["dataMin - 10", "dataMax + 10"]}
+                  
+                  
                 />
                 <Tooltip
 
@@ -44,6 +70,7 @@ function SimpleBarChart({data}) {
                   height={35}
                 />
                 <Bar
+                
                   dataKey="kilogram"
                   fill="#282D30"
                   radius={[5, 5, 0, 0]}
@@ -51,6 +78,7 @@ function SimpleBarChart({data}) {
                   name={'Poids (kg)'}
                 />
                 <Bar
+                
                   dataKey="calories"
                   fill="#E60000"
                   radius={[5, 5, 0, 0]}
