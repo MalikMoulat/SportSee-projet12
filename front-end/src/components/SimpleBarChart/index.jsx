@@ -25,6 +25,15 @@ function SimpleBarChart({data}) {
 
   // console.log('datax', datax)
 
+  const CustomTooltip = ({ active, payload, label }) => active
+  ? (
+  <div className="simple__bar__content__tooltip">
+      <div>{payload[0].value}kg</div>
+      <div>{payload[1].value}kCal</div>
+  </div>
+    )
+  : null
+
   
     return (
         <div className='simple__bar__content'>
@@ -57,7 +66,7 @@ function SimpleBarChart({data}) {
                   
                 />
                 <Tooltip
-
+                  content={(data) => <CustomTooltip active={data.active} payload={data.payload} label={data.label} />}
                 />
                 <CartesianGrid
                   strokeDasharray="3 3"

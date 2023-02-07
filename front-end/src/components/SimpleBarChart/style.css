@@ -11,3 +11,9 @@
     margin: 24px 0 0 32px;
     font-size: 15px;
 }
+
+.simple__bar__content__tooltip{
+    background-color: #FF0000;
+    color: white;
+    padding: 5px;
+}

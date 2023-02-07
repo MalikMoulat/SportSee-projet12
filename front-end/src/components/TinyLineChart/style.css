@@ -13,3 +13,8 @@
     width: 180px;
     margin: 29px 0 0 34px;
 }
+
+.tiny__line__chart__tooltip {
+    background: white;
+    padding: 5px;
+  }
