@@ -2,11 +2,14 @@ import './style.css'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function Header ({data}) {
 
-    // console.log('Header prop : ', data?.userInfos?.firstName)
-
-    
+/**
+ * This Function take user data and return a section with the name of the user.
+ * 
+ * @param {Object} data  user data
+ * @returns A component with the name of the user.
+ */
+function Header ({ data }) {
 
     return (
         <section className='header'>
@@ -16,8 +19,8 @@ function Header ({data}) {
     )
 }
 
-// Header.propTypes = {
-//     // firtName: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.any])
-// }
+Header.propTypes = {
+    data: PropTypes.object
+}
 
 export default Header

@@ -5,6 +5,11 @@ import iconfitness from '../../assets/iconfitness.svg'
 import iconswimming from '../../assets/iconswimming.svg'
 import iconbike from '../../assets/iconbike.svg'
 
+
+/**
+ * 
+ * @returns vertical menu with icon
+ */
 function VerticalNav() {
 
     return (

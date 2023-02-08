@@ -2,13 +2,14 @@ import React, { PureComponent } from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './style.css'
 
-
+/**
+ * 
+ * @param {object} data Activity data of user
+ * @returns a bar chart with the activity user
+ */
 function SimpleBarChart({data}) {
 
   const datas = data?.sessions
-
-  // console.log(datas)
-
   const datax = []
   const payload = [[], []]
 
@@ -23,16 +24,17 @@ function SimpleBarChart({data}) {
     payload[1].push(datas[day].calories)
   }
 
-  // console.log('datax', datax)
-
-  const CustomTooltip = ({ active, payload, label }) => active
-  ? (
-  <div className="simple__bar__content__tooltip">
-      <div>{payload[0].value}kg</div>
-      <div>{payload[1].value}kCal</div>
-  </div>
-    )
-  : null
+  const CustomTooltip = ({ active, payload}) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="simple__bar__content__tooltip">
+          <div>{payload[0]?.value}kg</div>
+          <div>{payload[1]?.value}kCal</div>
+        </div>
+        )
+      }
+      return null
+    }
 
   
     return (
@@ -51,22 +53,15 @@ function SimpleBarChart({data}) {
               >
                 <XAxis
                   dataKey="day"
-                  // tickLine={{ stroke: '#E60000' }}
                   tickLine={false}
                   domain={["dataMin + 1", "dataMax + 1"]}
-                  
                 />
                 <YAxis
-                
                   orientation="right"
                   axisLine={false}
-                  // dataKey="kilogram"
-                  // domain={["dataMin - 10", "dataMax + 10"]}
-                  
-                  
                 />
                 <Tooltip
-                  content={(data) => <CustomTooltip active={data.active} payload={data.payload} label={data.label} />}
+                  content={(data) => <CustomTooltip active={data.active} payload={data.payload} />}
                 />
                 <CartesianGrid
                   strokeDasharray="3 3"
@@ -79,7 +74,6 @@ function SimpleBarChart({data}) {
                   height={35}
                 />
                 <Bar
-                
                   dataKey="kilogram"
                   fill="#282D30"
                   radius={[5, 5, 0, 0]}
@@ -87,7 +81,6 @@ function SimpleBarChart({data}) {
                   name={'Poids (kg)'}
                 />
                 <Bar
-                
                   dataKey="calories"
                   fill="#E60000"
                   radius={[5, 5, 0, 0]}

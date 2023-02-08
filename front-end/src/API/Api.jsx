@@ -3,6 +3,14 @@ import axios from 'axios';
 
 const baseUrl = 'http://localhost:3000/user/';
 
+
+/**
+ * It takes an id as an argument, and returns a promise that resolves to an object containing the data
+ * from all four endpoints
+ * 
+ * @param {number} id 
+ * @returns user datas
+ */
 const getAllData = async (id) => {
   const endPoints = [
     `${baseUrl}${id}`,

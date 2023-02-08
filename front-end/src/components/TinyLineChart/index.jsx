@@ -2,21 +2,26 @@ import React, { Component } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './style.css'
 import { Rectangle } from "recharts";
+import PropTypes from "prop-types"
 
 import { handleFormatTick } from '../../Utils/FormatDatas';
 
-
+/**
+ * 
+ * @param {object} data Session data of the user 
+ * @returns a div with the sessions data of the user on a line chart
+ */
 function TinyLineChart({data}) {
 
   const datas = data?.sessions
 
-  const CustomTooltip = ({ active, payload, label }) => {
+  const CustomTooltip = ({ active, payload}) => {
     if (active && payload && payload.length) {
       return (
         <div className="tiny__line__chart__tooltip">
           <p className="label">{`${payload[0].value} min`}</p>
         </div>
-      )
+        )
       }
       return null
     }
@@ -55,13 +60,6 @@ function TinyLineChart({data}) {
                     activeDot={{ stroke: "#ffffff", strokeWidth: 2, r: 3 }}
                   />
                   <Tooltip
-                    // wrapperStyle={{
-                    //   background: "#000",
-                    //   color: '#000',
-                    //   width: "39px",
-                    //   height: "25px",
-                    //   outline: "none",
-                    // }}
                     content={(data) => <CustomTooltip active={data.active} payload={data.payload} label={data.label} />}
                     cursor={<CustomCursor />}
                     />
@@ -71,7 +69,6 @@ function TinyLineChart({data}) {
                       tickLine={false}
                       stroke={"#fff"}
                       tickFormatter={handleFormatTick}
-                      
                     />
                     <YAxis hide padding={{ top: 70, bottom: 20 }} />
               </LineChart>
@@ -80,6 +77,9 @@ function TinyLineChart({data}) {
     )
 }
 
+TinyLineChart.propTypes = {
+  data: PropTypes.object
+}
 
 
 export default TinyLineChart

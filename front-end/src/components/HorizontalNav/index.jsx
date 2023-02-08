@@ -2,6 +2,11 @@ import React  from 'react';
 import "./style.css"
 import logo from '../../assets/logo.svg'
 
+
+/**
+ * this function return the horizontal menu
+ * @returns a component with the logo and link (menu)
+ */
 function HorizontalNav() {
 
     return (

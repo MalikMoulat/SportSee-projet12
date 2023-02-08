@@ -6,7 +6,6 @@ import './style.css'
 
 import getAllData from '../../API/Api'
 
-import Home from '../Home'
 
 import Header from '../../components/Header'
 import SimpleBarChart from '../../components/SimpleBarChart'
@@ -29,23 +28,17 @@ import { getCalorieCount, getCarbohydrateCount, getLipideCount, getProteinCount 
 
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../API/MockData'
 
-// console.log(USER_MAIN_DATA)
-
 function Dashboard() {
 
     const urlId = useParams()
 
-    const [isData, setIsData] = useState(false)
     const [firstFetch, setFirstFetch] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
 
-    const [scores, setScores] = useState()
     const [getUserData, setGetUserData] = useState(null)
     const [getActivityData, setGetActivityData] = useState(null)
     const [getAverageData, setGetAverageData] = useState(null)
     const [getPerfData, setGetPerfData] = useState(null)
 
-    const [getError, setGetError] = useState(false);
 
     if(Object.keys(urlId) !== 0){
         localStorage.setItem('id', urlId)
@@ -63,9 +56,6 @@ function Dashboard() {
                         const average = new Average(userDatas.average)
                         const performance = new Performance(userDatas.performance)
 
-
-                        
-                        // console.log(user, activity, average, performance)
                         
                         //Placement de la data dans le useState
                         setGetUserData(user.data)
@@ -73,15 +63,10 @@ function Dashboard() {
                         setGetAverageData(average.data)
                         setGetPerfData(performance.data)
                         
-
-                        setGetError(false)
-                        setIsData(true)
-
                     }
                 }
                 catch (error) {
-                    setGetError(true)
-                    setIsData(false)
+                    console.error(error)
                 }
             }
             getUserData()
@@ -106,30 +91,26 @@ function Dashboard() {
             <SimpleRadialBarChart data={getUserData} />
             <div className='content__macro__infos'>
                 <MacroInfos
-                icon={[CaloriesIcon]}
-                macroName={['Calories']}
-                value={['1500kCal']}
+                icon={CaloriesIcon}
+                macroName={'Calories'}
                 data={getCalorieCount(getUserData)}
                 />
 
                 <MacroInfos
-                icon={[ProteinIcon]}
-                macroName={['Proteines']}
-                value={['150g']}
+                icon={ProteinIcon}
+                macroName={'Proteines'}
                 data={getProteinCount(getUserData)}
                 />
 
                 <MacroInfos
-                icon={[CarbsIcon]}
-                macroName={['Glucides']}
-                value={['150g']}
+                icon={CarbsIcon}
+                macroName={'Glucides'}
                 data={getCarbohydrateCount(getUserData)}
                 />
 
                 <MacroInfos
-                icon={[FatIcon]}
-                macroName={['Lipides']}
-                value={['150g']}
+                icon={FatIcon}
+                macroName={'Lipides'}
                 data={getLipideCount(getUserData)}
                 />
             </div>

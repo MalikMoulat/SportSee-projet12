@@ -1,28 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import calorieIcon from '../../assets/iconcalories.svg'
-
-
 import './style.css'
-function MacroInfos({icon, value, macroName, data}) {
 
-    
-    // let displayedMacroName
-    // // Si le type de macroName est un string retoune macroName dans un array sinon retourne macroName (qui est un array)
-    // (typeof macroName === 'string') ? displayedMacroName = [macroName] : displayedMacroName = macroName
-    // {   displayedMacroName.map((e, index) => {
-    //                     return <h3 key={e + index}>{e}</h3>
-    //                     })}
-    
-    
-    // console.log('ICON :',icon.icon[0])
-    // console.log('ICON :',icon.macroName[0])
-    // console.log('ICON :',icon.value[0])
-    
-
+/**
+ * 
+ * @param {string} icon Icon of macronutrient
+ * @param {string} macroName Type of macronutrient
+ * @param {string} data Value of macronutrient
+ * 
+ * @returns a div with the macro infos (icon, value and name of macronutrient)
+ */
+function MacroInfos( {icon, macroName, data} ) {
 
     return (
-        
         <div className='macro__infos'>
             <img src={icon} alt="Calorie icon"></img>
             <div>
@@ -34,8 +24,9 @@ function MacroInfos({icon, value, macroName, data}) {
 }
 
 MacroInfos.propTypes = {
-    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-    macroName: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
+    icon: PropTypes.string,
+    macroName: PropTypes.string,
+    data: PropTypes.string
 }
 
 export default MacroInfos
