@@ -29,30 +29,10 @@ https://github.com/MalikMoulat/SportSee-projet12
 
   Install Backend
   
-`````
-cd back-end
 
-# with NPM
-npm install
+[Backend Repository](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
 
-# with Yarn
-yarn
-or
-yarn install
 
-Start the Backend
-
-# with NPM
-npm start
-# with yarn
-yarn start
-`````
-
-More Backend informations
-
-`````
-https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
-`````
 
 
   Install Frontend
