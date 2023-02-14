@@ -37,3 +37,11 @@ export function handleFormatTick(numDay) {
         return days[6];
     }
   }
+
+  
+  function formatedMockedData(mockedData, urlId) {
+
+    return Object.values(mockedData).find(obj => obj.id || obj.userId == urlId.id);
+  }
+
+  export default formatedMockedData
